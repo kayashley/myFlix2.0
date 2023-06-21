@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>myFlix</title>
+        
+    </head>
+
+    <body>
+        <h1>Documentation</h1>
+        <h3>API Title - MyFlix</h3>
+        <p>A REST API for my web application that interacts with a database that stores data about different shows.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Business Logic</th>
+                    <th>URL</th>
+                    <th>HTTP Method</th>
+                    <th>Query Parameters</th>
+                    <th>Request body data format</th>
+                    <th>Response body data format</th>
+                </tr>
+        </thead>
+            <tbody>
+                <tr>
+                    <td>Returns a list of all movies</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td> </td>
+                    <td> </td>
+                    <td>A JSON object that contains data about all movies</td>
+                </tr>
+                <tr>
+                    <td>Returns data about a single movie by title</td>
+                    <td>/movies/:Title</td>
+                    <td>GET</td>
+                    <td>:title</td>
+                    <td> </td>
+                    <td>A JSON object containing data about the single movie requested</td>
+                </tr>
+                <tr>
+                    <td>Returns a list of movies under the requested genre</td>
+                    <td>/movies/genre/:genreName</td>
+                    <td>GET</td>
+                    <td>:genreName</td>
+                    <td> </td>
+                    <td>A JSON object containing data about a specific genre of a movie</td>
+                </tr>
+                <tr>
+                    <td>Returns data about a director by name</td>
+                    <td>/movies/directors/:directorName</td>
+                    <td>GET</td>
+                    <td>:directorName</td>
+                    <td> </td>
+                    <td>A JSON object containing data about a specific director</td>
+                </tr>
+                <tr>
+                    <td>Allows new users to register</td>
+                    <td>/users</td>
+                    <td>POST</td>
+                    <td> </td>
+                    <td>A JSON object containing data to add, structured like: {"Username": "String","Password": "String", "Email": "String", "Birthday": "Date"}</td>
+                    <td>A JSON object that was added, structured like: {"Username": "String","Password": "String", "Email": "String", "Birthday": "Date"}</td>
+                </tr>
+                <tr>
+                    <td>Allow users to update their information</td>
+                    <td>/users/:Username</td>
+                    <td>PUT</td>
+                    <td>:Username</td>
+                    <td> </td>
+                    <td>A JSON object containing the updated user information</td>
+                </tr>
+                <tr>
+                    <td>Allow users to add movies to their list of favorites</td>
+                    <td>/users/:id/:favoriteMovies</td>
+                    <td>PUT</td>
+                    <td>:UserId</td>
+                    <td> </td>
+                    <td>A JSON object containing data about the user and what movie was added</td>
+                </tr>
+                <tr>
+                    <td>Allow users to delete a movie(s) from their favorites list</td>
+                    <td>/users/:id/:favoriteMovies</td>
+                    <td>DELETE</td>
+                    <td>:UserId</td>
+                    <td> </td>
+                    <td>A JSON object containing data about the user and what movie was removed</td>
+                </tr>
+                <tr>
+                    <td>Allow users to deregister</td>
+                    <td>/users/:Username</td>
+                    <td>DELETE</td>
+                    <td>:Username</td>
+                    <td> </td>
+                    <td>A JSON object containing data on the deleted user</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>
