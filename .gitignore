@@ -1,4 +1,4 @@
-logs/
-db/
-node_modules/
-.env/
+/logs.txt
+/db.txt
+/node_modules
+/.env
