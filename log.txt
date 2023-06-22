@@ -325,3 +325,10 @@
 127.0.0.1 - - [21/Jun/2023:21:52:12 +0000] "POST /users/testz/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 192
 127.0.0.1 - - [21/Jun/2023:21:52:25 +0000] "DELETE /users/testz/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 166
 127.0.0.1 - - [21/Jun/2023:21:52:37 +0000] "DELETE /users/test13 HTTP/1.1" 200 19
+127.0.0.1 - - [22/Jun/2023:19:20:13 +0000] "POST /login HTTP/1.1" 200 553
+127.0.0.1 - - [22/Jun/2023:19:20:34 +0000] "GET /movies HTTP/1.1" 201 9816
+127.0.0.1 - - [22/Jun/2023:19:20:37 +0000] "GET /movies/genres/Comedy HTTP/1.1" 200 242
+127.0.0.1 - - [22/Jun/2023:19:20:38 +0000] "GET /users HTTP/1.1" 201 4581
+127.0.0.1 - - [22/Jun/2023:19:20:41 +0000] "GET /users/test13 HTTP/1.1" 200 4
+127.0.0.1 - - [22/Jun/2023:19:20:48 +0000] "GET /users/user05 HTTP/1.1" 200 4
+127.0.0.1 - - [22/Jun/2023:19:20:55 +0000] "GET /users/test9 HTTP/1.1" 200 181
