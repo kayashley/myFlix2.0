@@ -2,6 +2,7 @@
 
 const bodyParser = require("body-parser"); // Import the body-parser module to parse HTTP request bodies.
 const express = require("express"); // Import the Express module to build the web application.
+const dotenv = require("dotenv");
 const app = express(); // Create an instance of the Express application.
 const uuid = require("uuid"); // Import the uuid module to generate unique identifiers.
 const morgan = require("morgan"); // Import the morgan module for HTTP request logging.
@@ -9,6 +10,9 @@ const fs = require("fs"); // Import the fs module to work with the file system.
 const path = require("path"); // Import the path module to manipulate file paths.
 const mongoose = require("mongoose"); // Import the mongoose module to interact with MongoDB.
 const Models = require("./models.js"); // Import a local file that contains the data models.
+
+// .env to hide sensitive data
+dotenv.config()
 
 const Movies = Models.Movie; // Get the movie model from the models file.
 const Users = Models.User; // Get the user model from the models file.
@@ -27,10 +31,14 @@ let auth = require("./auth")(app); // Import and execute an authentication modul
 const passport = require("passport"); // Import the passport module for user authentication.
 require("./passport"); // Import the passport configuration from a local file.
 
-mongoose.connect("process.env.CONNECTION_URI", {
+mongoose.connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+}, )
+    .then(() => console.log("Connected successfully."))
+    .catch((err) => { console.error(err);
 }); 
+
 
 // Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
 // mongoose.connect("mongodb://127.0.0.1:27017/test", {
