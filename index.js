@@ -27,10 +27,17 @@ let auth = require("./auth")(app); // Import and execute an authentication modul
 const passport = require("passport"); // Import the passport module for user authentication.
 require("./passport"); // Import the passport configuration from a local file.
 
-mongoose.connect("mongodb://127.0.0.1:27017/test", {
+mongoose.connect("process.env.CONNECTION_URI", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}); // Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
+}); 
+
+// Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
+// mongoose.connect("mongodb://127.0.0.1:27017/test", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+
+// }); 
 
 
 // GET requests
@@ -43,6 +50,7 @@ app.get("/", (req, res) => {
 // Get all users
 app.get(
     "/users",
+    passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Users.find()
             .then((users) => {
@@ -93,7 +101,7 @@ app.post("/users", (req, res) => {
 // Get a user by username
 app.get(
     "/users/:Username",
-    // passport.authenticate("jwt", { session: false }),
+    passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Users.findOne({ Username: req.params.Username })
             .then((user) => {
