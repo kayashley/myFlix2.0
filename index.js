@@ -10,6 +10,7 @@ const fs = require("fs"); // Import the fs module to work with the file system.
 const path = require("path"); // Import the path module to manipulate file paths.
 const mongoose = require("mongoose"); // Import the mongoose module to interact with MongoDB.
 const Models = require("./models.js"); // Import a local file that contains the data models.
+const PORT = process.env.PORT || 8080;
 
 // .env to hide sensitive data
 dotenv.config()
@@ -309,9 +310,8 @@ app.use((err, req, res, next) => {
 });
 
 // Looks for pre-configured port number 
-const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0',() => {
- console.log('Listening on Port ' + port);
+app.listen(PORT, () => {
+ console.log('Listening on Port ' + PORT);
 });
 
 // listen for requests
