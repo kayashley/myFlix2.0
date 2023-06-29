@@ -1,4 +1,4 @@
-# myFlix2.0
+# myFlix3.0
 
 A movie API created using node.js. 
 
