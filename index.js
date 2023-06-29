@@ -43,6 +43,7 @@ app.get("/", (req, res) => {
 // Get all users
 app.get(
     "/users",
+    passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Users.find()
             .then((users) => {
@@ -107,11 +108,12 @@ app.get(
 );
 
 
+
 // no callback, uses .then()
 // updating user info
 app.put(
     "/users/:Username",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         // Validate that all parameters exist in the request
         if (req.body && req.body.Username && req.body.Password && req.body.Email && req.body.Birthday) {
@@ -144,7 +146,7 @@ app.put(
 // POST allows users to add to their fav movie list
 app.post(
     "/users/:Username/movies/:MovieID",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
       Users.findOneAndUpdate(
         { Username: req.params.Username },
@@ -170,7 +172,7 @@ app.post(
 // DELETE a movie to a user's list of favorites
 app.delete(
     "/users/:Username/movies/:MovieID",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Users.findOneAndUpdate(
             { Username: req.params.Username },
@@ -196,7 +198,7 @@ app.delete(
 // Delete a user by username
 app.delete(
     "/users/:Username",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Users.findOneAndRemove({ Username: req.params.Username })
             .then((user) => {
@@ -217,7 +219,7 @@ app.delete(
 // Get all movies
 app.get(
     "/movies",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Movies.find()
             .then((movies) => {
@@ -235,7 +237,7 @@ app.get(
 // Get a movie by title
 app.get(
     "/movies/:Title",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Movies.findOne({ Title: req.params.Title })
             .then((movie) => {
@@ -252,7 +254,7 @@ app.get(
 // Get a Movie by Genre
 app.get(
     "/movies/genres/:genreName",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Movies.findOne({ "Genre.Name": req.params.genreName })
             .then((movie) => {
@@ -269,7 +271,7 @@ app.get(
 // Get a Movie by Director
 app.get(
     "/movies/directors/:directorName",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Movies.findOne({ "Director.Name": req.params.directorName })
             .then((movie) => {
