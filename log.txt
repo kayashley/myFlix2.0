@@ -224,3 +224,5 @@
 127.0.0.1 - - [21/Jun/2023:19:20:06 +0000] "POST /users/test30/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 195
 127.0.0.1 - - [21/Jun/2023:19:20:18 +0000] "DELETE /users/test25/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 170
 127.0.0.1 - - [21/Jun/2023:19:20:31 +0000] "DELETE /users/user04 HTTP/1.1" 200 19
+127.0.0.1 - - [04/Jul/2023:17:43:03 +0000] "POST /login HTTP/1.1" 200 553
+127.0.0.1 - - [04/Jul/2023:17:43:05 +0000] "GET /movies HTTP/1.1" 201 9816
