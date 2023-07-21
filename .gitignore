@@ -6,3 +6,6 @@ db.txt
 log.txt
 mongodb.txt
 Procfile
+
+# add .env file to .gitignore
+echo ".env" >> .gitignore
