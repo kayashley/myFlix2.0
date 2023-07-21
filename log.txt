@@ -226,3 +226,15 @@
 127.0.0.1 - - [21/Jun/2023:19:20:31 +0000] "DELETE /users/user04 HTTP/1.1" 200 19
 127.0.0.1 - - [04/Jul/2023:17:43:03 +0000] "POST /login HTTP/1.1" 200 553
 127.0.0.1 - - [04/Jul/2023:17:43:05 +0000] "GET /movies HTTP/1.1" 201 9816
+::1 - - [21/Jul/2023:01:22:38 +0000] "POST /login HTTP/1.1" 200 553
+::1 - - [21/Jul/2023:01:22:41 +0000] "GET /movies HTTP/1.1" 201 9816
+::1 - - [21/Jul/2023:01:22:43 +0000] "GET /movies/genres/Comedy HTTP/1.1" 200 242
+::1 - - [21/Jul/2023:01:22:45 +0000] "GET /users HTTP/1.1" 201 4581
+::1 - - [21/Jul/2023:01:22:47 +0000] "GET /users/test9 HTTP/1.1" 200 181
+::1 - - [21/Jul/2023:01:22:49 +0000] "GET /movies/Thor HTTP/1.1" 200 808
+::1 - - [21/Jul/2023:01:22:51 +0000] "GET /movies/genres/Action HTTP/1.1" 200 195
+::1 - - [21/Jul/2023:01:22:53 +0000] "GET /movies/directors/Jon%20Favreau HTTP/1.1" 200 308
+::1 - - [21/Jul/2023:01:22:58 +0000] "PUT /users/testz HTTP/1.1" 200 166
+::1 - - [21/Jul/2023:01:23:03 +0000] "POST /users/testz/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 192
+::1 - - [21/Jul/2023:01:23:05 +0000] "DELETE /users/testz/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 166
+::1 - - [21/Jul/2023:01:23:08 +0000] "DELETE /users/test13 HTTP/1.1" 400 20
