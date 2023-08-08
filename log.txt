@@ -238,3 +238,7 @@
 ::1 - - [21/Jul/2023:01:23:03 +0000] "POST /users/testz/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 192
 ::1 - - [21/Jul/2023:01:23:05 +0000] "DELETE /users/testz/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 166
 ::1 - - [21/Jul/2023:01:23:08 +0000] "DELETE /users/test13 HTTP/1.1" 400 20
+::1 - - [08/Aug/2023:17:26:29 +0000] "GET / HTTP/1.1" 200 24
+::1 - - [08/Aug/2023:17:26:29 +0000] "GET /favicon.ico HTTP/1.1" 404 150
+::1 - - [08/Aug/2023:17:27:01 +0000] "POST /login HTTP/1.1" 200 553
+::1 - - [08/Aug/2023:17:27:11 +0000] "GET /movies HTTP/1.1" 201 9816
