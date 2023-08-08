@@ -4,6 +4,7 @@ const bodyParser = require("body-parser"); // Import the body-parser module to p
 const express = require("express"); // Import the Express module to build the web application.
 const dotenv = require("dotenv");
 const app = express(); // Create an instance of the Express application.
+const cors = require("cors");
 const uuid = require("uuid"); // Import the uuid module to generate unique identifiers.
 const morgan = require("morgan"); // Import the morgan module for HTTP request logging.
 const fs = require("fs"); // Import the fs module to work with the file system.
@@ -21,6 +22,10 @@ const Users = Models.User; // Get the user model from the models file.
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
     flags: "a",
 }); // Create a write stream for the request log.
+
+app.use(cors({
+    origin: "mongodb://localhost:27017/test"
+}));
 
 app.use(morgan("common", { stream: accessLogStream })); // Use morgan as middleware to log requests to the log file.
 app.use(express.static("public")); // Set the "public" folder as a static folder to serve static files.
