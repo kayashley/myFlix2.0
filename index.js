@@ -30,21 +30,6 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 //   })
 // );
 
-// mongoose.connect(process.env.CONNECTION_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-//   .then(() => console.log("Connected successfully."))
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
-// Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
-mongoose.connect("mongodb://127.0.0.1:27017/test", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
 app.use(cors());
 
 app.use(morgan("common", { stream: accessLogStream })); // Use morgan as middleware to log requests to the log file.
@@ -56,6 +41,21 @@ app.use(bodyParser.urlencoded({ extended: true })); // Use body-parser to parse 
 let auth = require("./auth")(app); // Import and execute an authentication module, passing the Express application as a parameter.
 const passport = require("passport"); // Import the passport module for user authentication.
 require("./passport"); // Import the passport configuration from a local file.
+
+mongoose.connect(process.env.CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+//   .then(() => console.log("Connected successfully."))
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
+// mongoose.connect("mongodb://127.0.0.1:27017/test", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 // GET requests
 
