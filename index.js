@@ -42,10 +42,13 @@ let auth = require("./auth")(app); // Import and execute an authentication modul
 const passport = require("passport"); // Import the passport module for user authentication.
 require("./passport"); // Import the passport configuration from a local file.
 
-mongoose.connect(process.env.CONNECTION_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://itskaychay:dbadmin123@test.w0fysci.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 //   .then(() => console.log("Connected successfully."))
 //   .catch((err) => {
 //     console.error(err);
