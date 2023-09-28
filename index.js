@@ -3,6 +3,7 @@
 const bodyParser = require("body-parser"); // Import the body-parser module to parse HTTP request bodies.
 const express = require("express"); // Import the Express module to build the web application.
 const dotenv = require("dotenv");
+// const dotenv = require("dotenv").config().parsed;
 const app = express(); // Create an instance of the Express application.
 const cors = require("cors");
 const uuid = require("uuid"); // Import the uuid module to generate unique identifiers.
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 8080;
 
 // .env to hide sensitive data
 dotenv.config();
+// dotenv.CONNECTION_URI;
 
 const Movies = Models.Movie; // Get the movie model from the models file.
 const Users = Models.User; // Get the user model from the models file.
@@ -30,20 +32,25 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 //   })
 // );
 
-// mongoose.connect(process.env.CONNECTION_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(
+  "mongodb+srv://itskaychay:dbadmin123@test.w0fysci.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+console.log(require("dotenv").config());
 //   .then(() => console.log("Connected successfully."))
 //   .catch((err) => {
 //     console.error(err);
 //   });
 
 // Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
-mongoose.connect("mongodb://127.0.0.1:27017/test", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect("mongodb://127.0.0.1:27017/test", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 app.use(cors());
 
