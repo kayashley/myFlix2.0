@@ -3,7 +3,6 @@
 const bodyParser = require("body-parser"); // Import the body-parser module to parse HTTP request bodies.
 const express = require("express"); // Import the Express module to build the web application.
 const dotenv = require("dotenv");
-// const dotenv = require("dotenv").config().parsed;
 const app = express(); // Create an instance of the Express application.
 const cors = require("cors");
 const uuid = require("uuid"); // Import the uuid module to generate unique identifiers.
@@ -16,7 +15,6 @@ const PORT = process.env.PORT || 8080;
 
 // .env to hide sensitive data
 dotenv.config();
-// dotenv.CONNECTION_URI;
 
 const Movies = Models.Movie; // Get the movie model from the models file.
 const Users = Models.User; // Get the user model from the models file.
@@ -32,27 +30,26 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 //   })
 // );
 
-mongoose.connect(
-  "mongodb+srv://itskaychay:dbadmin123@test.w0fysci.mongodb.net/test?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
+let allowedOrigins = [
+  "http://localhost:8080",
+  "https://myflix-app-kc.netlify.app",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        // If a specific origin isn’t found on the list of allowed origins
+        let message =
+          "The CORS policy for this application doesn’t allow access from origin " +
+          origin;
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    },
+  })
 );
-
-console.log(require("dotenv").config());
-//   .then(() => console.log("Connected successfully."))
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
-// Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
-// mongoose.connect("mongodb://127.0.0.1:27017/test", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-app.use(cors());
 
 app.use(morgan("common", { stream: accessLogStream })); // Use morgan as middleware to log requests to the log file.
 app.use(express.static("public")); // Set the "public" folder as a static folder to serve static files.
@@ -63,6 +60,24 @@ app.use(bodyParser.urlencoded({ extended: true })); // Use body-parser to parse 
 let auth = require("./auth")(app); // Import and execute an authentication module, passing the Express application as a parameter.
 const passport = require("passport"); // Import the passport module for user authentication.
 require("./passport"); // Import the passport configuration from a local file.
+
+mongoose.connect(
+  "mongodb+srv://itskaychay:dbadmin123@test.w0fysci.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+//   .then(() => console.log("Connected successfully."))
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
+// mongoose.connect("mongodb://127.0.0.1:27017/test", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 // GET requests
 
