@@ -33,7 +33,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 let allowedOrigins = [
   "http://localhost:8080",
   "https://myflix-app-kc.netlify.app/",
-  "http://localhost:4200/",
+  "http://localhost:4200",
 ];
 
 app.use(cors());
