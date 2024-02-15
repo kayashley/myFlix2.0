@@ -13,7 +13,7 @@ const mongoose = require("mongoose"); // Import the mongoose module to interact 
 const Models = require("./models.js"); // Import a local file that contains the data models.
 const PORT = process.env.PORT || 8080;
 // cors issue
-const request = require("request");
+// const request = require("request");
 
 // .env to hide sensitive data
 dotenv.config();
@@ -32,23 +32,23 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 //   })
 // );
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
-app.get("/", (req, res) => {
-  request(
-    { url: "https://myflix-app-kc.netlify.app/" },
-    (error, response, body) => {
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: "error", message: err.message });
-      }
+// app.get("/", (req, res) => {
+//   request(
+//     { url: "https://myflix-app-kc.netlify.app/" },
+//     (error, response, body) => {
+//       if (error || response.statusCode !== 200) {
+//         return res.status(500).json({ type: "error", message: err.message });
+//       }
 
-      res.json(JSON.parse(body));
-    }
-  );
-});
+//       res.json(JSON.parse(body));
+//     }
+//   );
+// });
 
 let allowedOrigins = [
   "http://localhost:8080",
