@@ -275,3 +275,5 @@
 ::1 - - [18/Sep/2023:19:58:21 +0000] "DELETE /users/test0/movies/643adf0ebbca36cd36baa49a HTTP/1.1" 200 162
 ::1 - - [18/Sep/2023:19:58:27 +0000] "DELETE /users/test1 HTTP/1.1" 200 18
 ::1 - - [18/Sep/2023:19:58:31 +0000] "GET /users HTTP/1.1" 201 4780
+::1 - - [15/Feb/2024:19:48:10 +0000] "GET / HTTP/1.1" 200 24
+::1 - - [15/Feb/2024:19:48:11 +0000] "GET /favicon.ico HTTP/1.1" 404 150
