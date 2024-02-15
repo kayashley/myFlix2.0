@@ -38,13 +38,16 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  request({ url: "https://localhost:4200" }, (error, response, body) => {
-    if (error || response.statusCode !== 200) {
-      return res.status(500).json({ type: "error", message: err.message });
-    }
+  request(
+    { url: "https://myflix-app-kc.netlify.app/" },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: "error", message: err.message });
+      }
 
-    res.json(JSON.parse(body));
-  });
+      res.json(JSON.parse(body));
+    }
+  );
 });
 
 let allowedOrigins = [
