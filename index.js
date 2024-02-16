@@ -13,7 +13,7 @@ const mongoose = require("mongoose"); // Import the mongoose module to interact 
 const Models = require("./models.js"); // Import a local file that contains the data models.
 const PORT = process.env.PORT || 8080;
 // cors issue
-const request = require("request");
+// const request = require("request");
 
 // .env to hide sensitive data
 dotenv.config();
