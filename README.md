@@ -4,7 +4,7 @@
 
 This Movie API is a Node.js application that provides information about movies, directors, and genres. It is designed to resemble a simplified version of Netflix, allowing users to look up details about their favorite movies.
 
-The API is hosted on Heroku and fetches data remotely from MongoDB Atlas, providing a seamless and scalable solution for storing and retrieving movie-related information.
+The API is hosted on Railway and fetches data remotely from MongoDB Atlas, providing a seamless and scalable solution for storing and retrieving movie-related information.
 
 ## Technologies Used
 
