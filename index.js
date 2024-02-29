@@ -12,8 +12,6 @@ const path = require("path"); // Import the path module to manipulate file paths
 const mongoose = require("mongoose"); // Import the mongoose module to interact with MongoDB.
 const Models = require("./models.js"); // Import a local file that contains the data models.
 const PORT = process.env.PORT || 8080;
-// cors issue
-// const request = require("request");
 
 // .env to hide sensitive data
 dotenv.config();
@@ -25,55 +23,14 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
 }); // Create a write stream for the request log.
 
-// CORS
-// app.use(
-//   cors({
-//     origin: "mongodb://localhost:27017/test",
-//   })
-// );
-
-// cors issue
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   next();
-// });
-
-// app.get("/", (req, res) => {
-//   request(
-//     { url: "https://myflix-app-kc.netlify.app/" },
-//     (error, response, body) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: "error", message: err.message });
-//       }
-
-//       res.json(JSON.parse(body));
-//     }
-//   );
-// });
-
 let allowedOrigins = [
   "http://localhost:8080",
   "https://myflix-app-kc.netlify.app/",
   "http://localhost:4200",
 ];
 
+// CORS
 app.use(cors());
-
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (!origin) return callback(null, true);
-//       if (allowedOrigins.indexOf(origin) === -1) {
-//         // If a specific origin isn’t found on the list of allowed origins
-//         let message =
-//           "The CORS policy for this application doesn’t allow access from origin " +
-//           origin;
-//         return callback(new Error(message), false);
-//       }
-//       return callback(null, true);
-//     },
-//   })
-// );
 
 app.use(morgan("common", { stream: accessLogStream })); // Use morgan as middleware to log requests to the log file.
 app.use(express.static("public")); // Set the "public" folder as a static folder to serve static files.
@@ -92,16 +49,6 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
-//   .then(() => console.log("Connected successfully."))
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
-// Connect to the MongoDB database using mongoose, with the connection URL and configuration options.
-// mongoose.connect("mongodb://127.0.0.1:27017/test", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
 
 // GET requests
 
@@ -179,8 +126,8 @@ app.get(
   }
 );
 
-// no callback, uses .then()
-// updating user info
+/*no callback, uses .then()
+updating user info */
 app.put(
   "/users/:Username",
   passport.authenticate("jwt", { session: false }),
@@ -371,8 +318,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log("Listening on Port " + PORT);
 });
-
-// listen for requests
-// app.listen(8080, () => {
-//     console.log("Your app is listening on port 8080.");
-// });
